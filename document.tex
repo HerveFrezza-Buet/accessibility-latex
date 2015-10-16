@@ -1,0 +1,108 @@
+\newif\ifzoom
+\zoomfalse
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                %
+% Select accessibility mode here %
+%                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Uncomment the following line to generate the accessible version.
+%% \zoomtrue
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                             %
+% Accessibility related stuff %
+%                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifzoom
+\documentclass[a4paper,17pt]{extbook} % or extarticle, extreport....
+% sudo apt install texlive-fonts-recommended
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault} 
+\usepackage[T1]{fontenc}
+\newcommand{\IncludeGraphics}[2]{\includegraphics[width=\textwidth,height=150mm,keepaspectratio]{#2}}
+\usepackage[margin=10mm, top=20mm]{geometry}
+\else
+\documentclass[a4paper,10pt,twoside]{book} % or article, report....
+\newcommand{\IncludeGraphics}[2]{\includegraphics[#1]{#2}}
+\usepackage[margin=3cm]{geometry}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            %
+% Usual latex file now stuff %
+%                            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+\begin{document}
+
+%% This will make math stuff bold.
+\ifzoom
+\mathversion{bold} 
+\else
+\fi
+
+%% Title page 
+
+\thispagestyle{empty}
+\vfill
+\hrule
+\vspace{20mm}
+\centerline{\Huge \sc \LaTeX\ accessibility example}
+\vspace{20mm}
+\hrule
+\vspace{10mm}
+\centerline{\hfill Last revision: \today}
+\vfill
+\strut
+\pagebreak
+
+
+%% Content
+
+\chapter{Text and figures}
+
+%% dummy text... Edgar Poe indeed.
+
+At Paris, just after dark one gusty evening in the autumn of 18-, I was
+enjoying the twofold luxury of meditation and a meerschaum, in company
+with my friend C. Auguste Dupin, in his little back library, or
+book-closet, au troisiême, No. 33, Rue Dunôt, Faubourg St. Germain. For
+one hour at least we had maintained a profound silence; while each, to
+any casual observer, might have seemed intently and exclusively occupied
+with the curling eddies of smoke that oppressed the atmosphere of the
+chamber. For myself, however, I was mentally discussing certain topics
+which had formed matter for conversation between us at an earlier period
+of the evening; I mean the affair of the Rue Morgue, and the mystery
+attending the murder of Marie Rogêt. I looked upon it, therefore, as
+something of a coincidence, when the door of our apartment was thrown
+open and admitted our old acquaintance, Monsieur G--, the Prefect of the
+Parisian police.
+
+\begin{equation}
+\sum_{i=1}^n \xi^2 \neq \int_0^1 x^{\xi+1}
+\end{equation}
+
+We gave him a hearty welcome; for there was nearly half as much of the
+entertaining as of the contemptible about the man, and we had not seen
+him for several years. We had been sitting in the dark, and Dupin now
+arose for the purpose of lighting a lamp, but sat down again, without
+doing so, upon G.'s saying that he had called to consult us, or rather
+to ask the opinion of my friend, about some official business which had
+occasioned a great deal of trouble.
+
+%% We provide a command for single-image figure that handles the display.
+\begin{figure}[htbp]
+\centerline{\IncludeGraphics{height=5cm}{EdgarAllanPoe.jpg}} % instead of \includegraphics[...]{...} 
+\caption{This is how the figure displays... this is Edgar Allan Poe.\label{fig:example}}
+\end{figure}
+
+
+\end{document}
