@@ -1,0 +1,22 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                             %
+% Accessibility related stuff %
+%                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifzoom
+\documentclass[a4paper,17pt]{extbook} % or extarticle, extreport....
+% sudo apt install texlive-fonts-recommended
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault} 
+\usepackage[T1]{fontenc}
+\newcommand{\IncludeGraphics}[2]{\includegraphics[width=\textwidth,height=150mm,keepaspectratio]{#2}}
+\newcommand{\HandleMathMode}[0]{\mathversion{bold}}
+\usepackage[margin=10mm, top=20mm]{geometry}
+\else
+\documentclass[a4paper,10pt,twoside]{book} % or article, report....
+\newcommand{\IncludeGraphics}[2]{\includegraphics[#1]{#2}}
+\newcommand{\HandleMathMode}[0]{}
+\usepackage[margin=3cm]{geometry}
+\fi

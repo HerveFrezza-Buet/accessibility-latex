@@ -1,41 +1,15 @@
-\newif\ifzoom
-\zoomfalse
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                %
-% Select accessibility mode here %
-%                                %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% Uncomment the following line to generate the accessible version.
-%% \zoomtrue
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                             %
-% Accessibility related stuff %
-%                             %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Adjust comments according to the version you want to produce.
+\input{unset-accessibility.tex}
+%\input{set-accessibility.tex}
 
-\ifzoom
-\documentclass[a4paper,17pt]{extbook} % or extarticle, extreport....
-% sudo apt install texlive-fonts-recommended
-\usepackage[scaled]{helvet}
-\renewcommand\familydefault{\sfdefault} 
-\usepackage[T1]{fontenc}
-\newcommand{\IncludeGraphics}[2]{\includegraphics[width=\textwidth,height=150mm,keepaspectratio]{#2}}
-\usepackage[margin=10mm, top=20mm]{geometry}
-\else
-\documentclass[a4paper,10pt,twoside]{book} % or article, report....
-\newcommand{\IncludeGraphics}[2]{\includegraphics[#1]{#2}}
-\usepackage[margin=3cm]{geometry}
-\fi
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                            %
-% Usual latex file now stuff %
-%                            %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%                      %
+% Usual latex file now %  (except for figure inclusion, see below, 
+%                      %   and after begin document).
+%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \usepackage[utf8]{inputenc}
@@ -43,11 +17,8 @@
 
 \begin{document}
 
-%% This will make math stuff bold.
-\ifzoom
-\mathversion{bold} 
-\else
-\fi
+%% This will make math stuff bold if needed.
+\HandleMathMode
 
 %% Title page 
 
